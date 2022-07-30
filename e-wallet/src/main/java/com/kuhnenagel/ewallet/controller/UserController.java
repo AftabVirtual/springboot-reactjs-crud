@@ -58,4 +58,5 @@ public class UserController {
 			@PathVariable(name = "wid", required = true) String wid, @RequestBody double topup) {
 		return new ResponseEntity<Double>(userService.topUp(uid, wid, topup), HttpStatus.CREATED);
 	}
+
 }
