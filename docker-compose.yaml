@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   e_wallet:
-    build: .
+    image: e-wallet:latest
     restart: always
     ports:
       - 8080:8080
@@ -12,3 +12,8 @@ services:
     restart: always
     ports:
       - 27017:27017
+  react_ui:
+    image: e-wallet-react-ui:latest
+    restart: always
+    ports:
+      - 3000:3000

@@ -1,24 +1,21 @@
 # About
 
-This is a sample CRUD project build upon:
+This is a sample CRUD project build on Spring Boot.
 
-* Spring Boot
-* ReactJS and
-* MongoDB
+# Deploy
 
-# Install
+Run it as a spring boot application. 
 
-Run following command in the root director:
+Note: As this application need MongoDB, make sure it is up an running at port 27017.
 
-```
-docker-compose up
-```
+Once the application is up, open following URL to view the API endpoints:
 
-# API Endpoints
+http://localhost:8080
 
-Once the application is up, we can excess endpoints at following URL:
+Use following credentials:
 
-http://localhost:8080/swagger-ui/index.html
+Username=admin                
+password=admin
 
 # Database setup
 Run MongoDB using following command:
@@ -26,13 +23,3 @@ Run MongoDB using following command:
 ```
 mongod.exe --dbpath=..\..\mongodb\data\db
 ```
-
-# Create jar file using below command:
-
-mvn clean package
-
-# Run jar file
-java -jar target\e-wallet-0.0.1-SNAPSHOT.jar
-
-
-# References
