@@ -4,15 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
 import com.kuhnenagel.ewallet.controller.UserController;
@@ -22,16 +17,12 @@ import com.kuhnenagel.ewallet.model.User;
 import com.kuhnenagel.ewallet.model.Wallet;
 import com.kuhnenagel.ewallet.repository.UserRepository;
 import com.kuhnenagel.ewallet.service.UserService;
-import org.springframework.data.mongodb.core.MongoTemplate;
 
 @Service
 public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserRepository userRepository;
-
-	@Autowired
-	private MongoTemplate mongoTemplate;
 
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
@@ -157,40 +148,4 @@ public class UserServiceImpl implements UserService {
 		return newBalance;
 	}
 
-	/*
-	 * @Override public double topUp(String uid, String wid, double topup) {
-	 * logger.info(" ###### uid: " + uid + " wid: " + wid + " topup: " + topup);
-	 * 
-	 * double currentBalance = getBalance(uid, wid); double newBalance =
-	 * currentBalance + topup; logger.info(" ### currentBalance: " + currentBalance
-	 * + " topup: " + topup + " newBalance: " + newBalance); if (newBalance < 0) {
-	 * throw new
-	 * CustomException("Balance Can't be less than Zero, Please recheck!"); }
-	 * Optional<User> currentUser = userRepository.findById(uid); if
-	 * (currentUser.isEmpty() || currentUser == null) { throw new
-	 * CustomException("User not found, Please recheck user id !"); } User user =
-	 * new User(); user.set_id(currentUser.get().get_id());
-	 * user.setName(currentUser.get().getName()); ArrayList<Wallet> wallets = new
-	 * ArrayList<Wallet>(); for (int i = 0; i <
-	 * currentUser.get().getWallets().size(); i++) { Wallet wallet = new Wallet();
-	 * wallet.set_id(currentUser.get().getWallets().get(i).get_id());
-	 * wallet.setWalletName(currentUser.get().getWallets().get(i).getWalletName());
-	 * logger.info("##### equals: "+currentUser.get().getWallets().get(i).get_id().
-	 * equals(wid)); //
-	 * logger.info("##### ==: "+currentUser.get().getWallets().get(i).get_id()==wid)
-	 * ; if (currentUser.get().getWallets().get(i).get_id().equals(wid)) {
-	 * logger.info("##### wallet id matched: "+currentUser.get().getWallets().get(i)
-	 * .get_id().equals(wid));
-	 * 
-	 * 
-	 * Query query = new Query(new Criteria("_id").is(uid)); Update update = new
-	 * Update().set("balance", newBalance);//.set("email", user.getEmail());
-	 * userRepository.updateFirst(query, update, COLLECTION);
-	 * 
-	 * wallet.setBalance(newBalance); } else {
-	 * wallet.setBalance(currentUser.get().getWallets().get(i).getBalance()); }
-	 * wallets.add(wallet); } user.setWallets(wallets);
-	 * logger.info("########## Final User Object: "+user);
-	 * userRepository.save(user); return newBalance; }
-	 */
 }
