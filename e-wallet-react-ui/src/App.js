@@ -1,5 +1,5 @@
 import React from 'react';
-import Webpages from './webpages';
+import Webpages from './webpages/Index';
 function App() {
   return (
     <div>
