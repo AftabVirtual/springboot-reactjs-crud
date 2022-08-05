@@ -5,8 +5,8 @@ import {
   Route,
   Link,
 } from "react-router-dom";
-import Home from "./home";
-import User from "./user";
+import Home from "./Home";
+import User from "./User";
 const Webpages = () => {
     console.log('here Webpages component');
   return (
